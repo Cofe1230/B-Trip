@@ -4,21 +4,14 @@ import {
   Route
 } from "react-router-dom";
 import MainPage from "./component/pages/MainPage";
-import Navigation from "./component/navigation/Navigation";
-import OverViewPage from "./component/pages/OverViewPage";
-import RecommendPage from "./component/pages/RecommendPage";
-import RecommendResultPage from "./component/pages/RecommendResultPage";
-
+import Routers from './Routers'
 
 function App() {
   return (
     <BrowserRouter>
-      <Navigation/>
       <Routes>
-        <Route index element={<MainPage/>} />
-        <Route path={"/overview"} element={<OverViewPage/>}></Route>
-        <Route path={"/recommend"} element={<RecommendPage/>}></Route>
-        <Route path={"/result"} element={<RecommendResultPage/>}></Route>
+        <Route path="/" element={<MainPage/>} />
+        <Route path="/*" element={<Routers />}/>
       </Routes>
     </BrowserRouter>
   );
