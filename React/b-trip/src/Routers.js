@@ -14,6 +14,7 @@ import {
             <Routes>
                 <Route path={"/overview"} element={<OverViewPage/>}></Route>
                 <Route path={"/recommend"} element={<RecommendPage/>}></Route>
+                <Route path={"/test"} element={<RecommendPage/>}></Route>
                 <Route path={"/result"} element={<RecommendResultPage/>}></Route>
             </Routes>
         </>

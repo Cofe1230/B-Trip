@@ -2,22 +2,30 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css");
 
 body {
-    background-image: url(../styles/BACK.gif);
+    background-image: url('../ui/BACK.gif');
+    /* background-size: cover; */
+    width: 100vw;
+    height: auto;
 }
 
 .home{
     font-family: Pretendard;
     font-weight: 100;
     text-align: justify;
-    margin-top: 0px;
     font-size: 140px;
     color: black;
     text-align: start;
     position: absolute;
     overflow: hidden;
-    width: 100%;
-    height: auto;
     z-index: 0;
+    height: auto;
+    width: 100vw;
+    transform: translate(0, 5%);
+    /* 드래그 방지*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .home div{
@@ -35,6 +43,7 @@ body {
     overflow: hidden;
     will-change: transform;
     animation: marquee 60s linear infinite;
+
 }
 
 @keyframes marquee{
@@ -55,10 +64,20 @@ body {
     font-size: 80px;
     text-align: center;
     font-weight: bold;
-    transform: translate(0, 300%)
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 10%;
 }
 
 .enter a{
     color: white; /* 포인트 색 변경*/
     text-decoration-line: none;
 }
+
+.enter a:hover > p{
+    color: #ffc600;
+}
+
+/* color: 2744AA, 122171, 08145E, 000846, FFC600 */

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dataproject.btrip.dto.ForiegnVisitorsDto;
 import com.dataproject.btrip.dto.TouristSpotVisitorsDto;
-import com.dataproject.btrip.entity.ForiegnVisitors;
 import com.dataproject.btrip.mapper.ForiegnVisitorsMapper;
 import com.dataproject.btrip.mapper.TouristSpotVisitorsMapper;
 import com.dataproject.btrip.service.OverviewService;

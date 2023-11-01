@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import '../styles/MainPage.css';
 
 const MainPage = () => {
@@ -77,7 +76,7 @@ const MainPage = () => {
         </div>
       </div>
       <div className='enter'>
-        <p><a href='/overview'>ENTER</a></p>
+        <p><a href='/overview'>Have a nice <p>B-trip!</p></a></p>
       </div>
     </div>
   );
