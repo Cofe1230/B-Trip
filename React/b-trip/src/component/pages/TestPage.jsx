@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReChartBar,ReChartScatter} from '../main/ChartComponent';
+import {ReChartBar,ReChartScatter} from '../ui/Recharts';
 
 const TestPage = () => {
   const data1 = [
