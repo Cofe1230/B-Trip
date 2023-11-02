@@ -18,17 +18,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
-@Table(name = "foreign_visitor")
-public class ForiegnVisitors {
+@Table(name = "variable_importance")
+public class VariableImportance {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name = "year", nullable = false)
-	private String year;
-	@Column(name = "month", nullable = false)
-	private String month;
-	@Column(name = "visitor", nullable = false)
-	private int visitor;
-	@Column(name = "excepted", nullable = false)
-	private int excepted;
+	@Column(name = "variable", nullable = false)
+	private String variable;
+	@Column(name = "importance", nullable = false)
+	private double importance;
 }

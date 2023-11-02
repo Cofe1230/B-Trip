@@ -5,8 +5,10 @@ const Navigation = () => {
   return (
     <div>
       <Link to="/">Home</Link> | 
-      <Link to="/overview"> 개요</Link> |
-      <Link to="/recommend"> 추천</Link>
+      <Link to="/overview"> OVERVIEW</Link> |
+      <Link to="/statics"> STATICS</Link> |
+      <Link to="/analysis"> ANALYSIS</Link> |
+      <Link to="/recommend"> RECOMMEND</Link>
     </div>
   );
 };
