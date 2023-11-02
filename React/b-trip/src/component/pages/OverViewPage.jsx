@@ -18,7 +18,7 @@ const OverViewPage = () => {
       const modifiedData = respSpotVisitor.data.map((item)=>{
         return{
           ...item,
-          name:item.title,
+          name:item.title.slice(0,6),
         }
       })
       //국가에 따라 분리
@@ -33,7 +33,7 @@ const OverViewPage = () => {
     }
   }
   const visitYData = [{key:2022,fill:'#4CAF50'},{key:2023,fill:'#987654'}]
-  const localSpotYData = [{key:'visitor' , fill:'#FFFFFF'}]
+  const localSpotYData = [{key:'visitor' , fill:'#000000'}]
   
   useEffect(()=>{
     getChartData()
