@@ -18,7 +18,7 @@ const OverViewPage = () => {
       const modifiedData = respSpotVisitor.data.map((item)=>{
         return{
           ...item,
-          name:item.title.slice(0,6),
+          name: item.title,
         }
       })
       //국가에 따라 분리
@@ -28,11 +28,14 @@ const OverViewPage = () => {
       setLocalSpotVisitor(localData)
       setForiegnSpotVisitor(foriegnData)
       setIsLoading(false)
+
     }catch(e){
       console.log(e);
     }
   }
-  const visitYData = [{key:2022,fill:'#4CAF50'},{key:2023,fill:'#987654'}]
+  //수정 stackId 추가, 그래프 추가
+  const visitYData = [{key:2022,fill:'#4CAF50'},{key:2023,fill:'#987654',stackId:'a'},{key:'excepted',fill:'#EEEEEE',stackId:'a'}]
+  //수정 끝
   const localSpotYData = [{key:'visitor' , fill:'#000000'}]
   
   useEffect(()=>{
@@ -64,17 +67,29 @@ const OverViewPage = () => {
     </div>
   );
 };
-
+// 수정
 function groupDataByMonth(data) {
   const groupedData = {};
+
   data.forEach(item => {
-    const { month, year, visitor } = item;
-    if (!groupedData[month]) {
-      groupedData[month] = {name:month};
+    const { month, year, visitor, excepted } = item;
+
+    // "expected" 값이 1인 경우에만 분리
+    if (item.hasOwnProperty("excepted") && item.excepted == 1){
+      if (!groupedData[month]) {
+        groupedData[month] = { name: month };
+      }
+      // "expected"를 키로 사용해서 데이터 추가
+      groupedData[month].excepted = visitor
+    }else{
+      if (!groupedData[month]) {
+        groupedData[month] = {name:month};
+      }
+      groupedData[month][year] = visitor;
     }
-    groupedData[month][year] = visitor;
   });
   return Object.values(groupedData);
 }
+//수정 끝
 
 export default OverViewPage;

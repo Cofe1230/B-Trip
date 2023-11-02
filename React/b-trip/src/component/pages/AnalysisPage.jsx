@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import {ReChartBar} from '../ui/Recharts';
-
+// 수정 ReChartLine추가
+import {ReChartBar, ReChartLine} from '../ui/Recharts';
+//수정 끝
 const AnalysisPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [vrblImp, setVrblImp] = useState(null);
@@ -25,14 +26,15 @@ const AnalysisPage = () => {
       })
       setVrblImp(modifiedVData)
       setShtsSc(modifiedSData)
-      console.log(modifiedSData)
+      setIsLoading(false)
     }catch(e){
       console.log(e)
     }
   }
   const vrblYData = [{key:'importance', fill:'#909090'}]
-  const shtsYData = [{key:'silhouetteScores', fill:'#909090'}]
-
+  // 수정 STROKE
+  const shtsYData = [{key:'silhouetteScores', stroke:'#909090'}]
+  // 수정 끝
   useEffect(()=>{
     getChartData()
   },[])
@@ -41,8 +43,10 @@ const AnalysisPage = () => {
       <h2>Analysis Page</h2>
       <ReChartBar width={800} height={300} data={vrblImp} xDataKey='name' yDataKey={vrblYData}
                       margin = {{top: 5,right: 30,left: 40,bottom: 5}} />
-      <ReChartBar width={800} height={300} data={shtsSc} xDataKey='name' yDataKey={shtsYData}
+      {/* 수정 ReChartLine */}
+      <ReChartLine width={800} height={300} data={shtsSc} xDataKey='name' yDataKey={shtsYData}
                       margin = {{top: 5,right: 30,left: 40,bottom: 5}} />
+      {/* 수정끝 */}
     </div>
   );
 };
