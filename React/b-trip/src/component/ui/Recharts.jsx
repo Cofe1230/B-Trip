@@ -1,5 +1,5 @@
 import React from 'react';
-import { BarChart, Bar,  XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import { BarChart, Bar,  XAxis, YAxis, CartesianGrid, Tooltip, Legend, Label} from 'recharts';
 
 
 export function ReChartBar(props) {
@@ -13,9 +13,11 @@ export function ReChartBar(props) {
       margin={margin}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey={xDataKey} />
-      {/* <YAxis label={{value : {ylabel} , angle: -90, position:'insideLeft' }}/> */}
-      <YAxis />
+      <XAxis dataKey={xDataKey} tick={{ fontSize: 10, fill: 'white' }} />
+      
+      <YAxis tick={{ fontSize: 14, fill: 'white' }}>
+        {/* <Label value="Y-Axis Label" position="insideLeft" angle={-90} style={{ fontSize: '14px', fill: 'white' }} /> */}
+      </YAxis>
       <Tooltip />
       <Legend/>
       {
