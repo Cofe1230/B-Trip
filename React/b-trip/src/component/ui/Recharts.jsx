@@ -1,7 +1,7 @@
 import React from 'react';
 import { BarChart, Bar,  XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart, Line} from 'recharts';
 
-
+//리차트 bar그래프
 export function ReChartBar(props) {
   const {data, width, height, margin, xDataKey, yDataKey,} = props;
   return (
@@ -47,7 +47,38 @@ export function ReChartBar(props) {
     </div>
   );
 }
-// 수정 함수 추가
+// 수정 ( 추가 )
+//리차트 bar vertical그래프
+export function ReChartVertBar(props) {
+  const {data, width, height, margin, xDataKey, yDataKey,} = props;
+  return (
+    <div>
+    <BarChart
+      layout = 'vertical'
+      width={width}
+      height={height}
+      data={data}
+      margin={margin}
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      {/* tick : x축 글자, y축 글자 style */}
+      <XAxis type='number' tick={{ fontSize: 14, fill: 'white' }}>
+      </XAxis>
+      <YAxis dataKey={xDataKey} interval={0} type='category' tick={{ fontSize: 14, fill: 'white' }} />
+      <Tooltip/>
+      <Legend/>
+      {
+        yDataKey.map((item)=>(
+          <Bar key={item.key} dataKey={item.key} fill={item.fill} stackId={item.stackId} />
+        ))
+      }
+    </BarChart>
+    </div>
+  );
+}
+//수정 끝
+
+//recharts 라인 그래프
 export function ReChartLine(props){
   const {data, width, height, margin, xDataKey, yDataKey,} = props;
   return (
@@ -70,4 +101,3 @@ export function ReChartLine(props){
       </LineChart>
   );
 }
-//수정 끝
