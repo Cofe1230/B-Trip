@@ -47,7 +47,7 @@ export function ReChartBar(props) {
     </div>
   );
 }
-// 수정 ( 추가 )
+
 //리차트 bar vertical그래프
 export function ReChartVertBar(props) {
   const {data, width, height, margin, xDataKey, yDataKey,} = props;
@@ -76,8 +76,16 @@ export function ReChartVertBar(props) {
     </div>
   );
 }
-//수정 끝
 
+const CustomDot = (props) => {
+  const { cx, cy, stroke, payload } = props;
+  if (payload.value==5) { // 특정 조건을 확인하여 원형 도트를 그립니다.
+    return (
+      <circle cx={cx} cy={cy} r={6} fill="red" />
+    );
+  }
+  return null;
+};
 //recharts 라인 그래프
 export function ReChartLine(props){
   const {data, width, height, margin, xDataKey, yDataKey,} = props;
@@ -90,12 +98,13 @@ export function ReChartLine(props){
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey={xDataKey} tick={{ fontSize: 10, fill: 'white' }} />
-        <YAxis tick={{ fontSize: 14, fill: 'white' }}/>
+        {/* 수정 domain 추가 */}
+        <YAxis tick={{ fontSize: 14, fill: 'white' }} domain={[0.04, 'auto']}/>
         <Tooltip />
         <Legend />
         {
           yDataKey.map((item)=>(
-            <Line key={item.key} type="category" dataKey={item.key} stroke={item.stroke} activeDot={{ r: 8 }} />
+            <Line key={item.key} type="category" dataKey={item.key} stroke={item.stroke} activeDot={{ r: 8 }}  />
           ))
         }
       </LineChart>

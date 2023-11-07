@@ -33,9 +33,7 @@ const OverViewPage = () => {
       console.log(e);
     }
   }
-  //수정 stackId 추가, 그래프 추가
   const visitYData = [{key:2022,fill:'#4CAF50'},{key:2023,fill:'#987654',stackId:'a'},{key:'excepted',fill:'#EEEEEE',stackId:'a'}]
-  //수정 끝
   const localSpotYData = [{key:'visitor' , fill:'#000000'}]
   
   useEffect(()=>{
@@ -67,7 +65,6 @@ const OverViewPage = () => {
     </div>
   );
 };
-// 수정
 function groupDataByMonth(data) {
   const groupedData = {};
 
@@ -90,6 +87,5 @@ function groupDataByMonth(data) {
   });
   return Object.values(groupedData);
 }
-//수정 끝
 
 export default OverViewPage;
