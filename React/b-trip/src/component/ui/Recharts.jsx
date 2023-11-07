@@ -20,14 +20,14 @@ export function ReChartBar(props) {
         if (payload.value.length > 7) {
           // 7글자 이상이면 ... 추가
           return (
-            <text x={x} y={y} fill="white" fontSize={10} textAnchor="middle">
+            <text dy={10} x={x} y={y} fill="white" fontSize={10} textAnchor="middle">
               {`${payload.value.slice(0, 7)}...`}
             </text>
           );
         } else {
           // 7글자 미만이면 그대로 표시
           return (
-            <text x={x} y={y} fill="white" fontSize={10} textAnchor="middle">
+            <text dy={10} x={x} y={y} fill="white" fontSize={10} textAnchor="middle">
               {payload.value}
             </text>
           );
@@ -100,11 +100,14 @@ export function ReChartLine(props){
         <XAxis dataKey={xDataKey} tick={{ fontSize: 10, fill: 'white' }} />
         {/* 수정 domain 추가 */}
         <YAxis tick={{ fontSize: 14, fill: 'white' }} domain={[0.04, 'auto']}/>
+        {/* 수정끝 */}
         <Tooltip />
         <Legend />
         {
           yDataKey.map((item)=>(
+            // 수정 type이 category가 아니면 category로 수정해주세요
             <Line key={item.key} type="category" dataKey={item.key} stroke={item.stroke} activeDot={{ r: 8 }}  />
+            // 수정 끝
           ))
         }
       </LineChart>

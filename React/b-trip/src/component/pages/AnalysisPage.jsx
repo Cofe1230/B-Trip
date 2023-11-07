@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-// 수정 ReChartVertBar 추가
 import {ReChartVertBar, ReChartLine} from '../ui/Recharts';
-//수정 끝
 const AnalysisPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [vrblImp, setVrblImp] = useState(null);
@@ -36,7 +34,6 @@ const AnalysisPage = () => {
   useEffect(()=>{
     getChartData()
   },[])
-  // 수정 isLoading 추가 (비동기 함수 기다리고 출력)
   return (
     <div>
       {
@@ -46,10 +43,8 @@ const AnalysisPage = () => {
         ) : (
           <div>
             <h2>Analysis Page</h2>
-      {/* 수정 ReChartVertBar 로 변경 */}
       <ReChartVertBar width={700} height={500} data={vrblImp} xDataKey='name' yDataKey={vrblYData}
                       margin = {{top: 5,right: 30,left: 40,bottom: 5}} />
-      {/* 수정끝 */}
       <ReChartLine width={800} height={300} data={shtsSc} xDataKey='name' yDataKey={shtsYData}
                       margin = {{top: 5,right: 30,left: 40,bottom: 5}} />
           </div>
@@ -57,7 +52,6 @@ const AnalysisPage = () => {
       }
     </div>
   );
-  // 수정 끝
 };
 
 

@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dataproject.btrip.dto.ForiegnVisitorsDto;
+import com.dataproject.btrip.dto.SpotVisitorsDto;
 import com.dataproject.btrip.dto.TouristSpotVisitorsDto;
 import com.dataproject.btrip.mapper.ForiegnVisitorsMapper;
+import com.dataproject.btrip.mapper.SpotVisitorsMapper;
 import com.dataproject.btrip.mapper.TouristSpotVisitorsMapper;
 import com.dataproject.btrip.service.OverviewService;
 
@@ -20,7 +22,8 @@ import lombok.RequiredArgsConstructor;
 public class OverviewController {
 	private final OverviewService overviewService;
 	private final ForiegnVisitorsMapper foriegnVisitorsMapper;
-	private final TouristSpotVisitorsMapper touristSpotVisitorsMapper;
+	private final SpotVisitorsMapper spotVisitorsMapper;
+	//private final TouristSpotVisitorsMapper touristSpotVisitorsMapper;
 	
 	@GetMapping("foriegn-visitors")
 	public List<ForiegnVisitorsDto> getForiegnVisitors(){
@@ -30,8 +33,8 @@ public class OverviewController {
 	}
 	
 	@GetMapping("spot-visitors")
-	public List<TouristSpotVisitorsDto> getSpotVisitors(){
-		List<TouristSpotVisitorsDto> spotVisitorsList = touristSpotVisitorsMapper.toDtoList(
+	public List<SpotVisitorsDto> getSpotVisitors(){
+		List<SpotVisitorsDto> spotVisitorsList = spotVisitorsMapper.toDtoList(
 															overviewService.getSpotVisitors());
 		return spotVisitorsList;
 	}

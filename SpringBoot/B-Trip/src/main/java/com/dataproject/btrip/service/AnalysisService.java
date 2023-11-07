@@ -18,7 +18,7 @@ public class AnalysisService {
 	private final SilhouetteScoresRepository silhouetteScoresRepository;
 	
 	public List<VariableImportance> getvrblImpList(){
-		return variableImportanceRepository.findAll(); 
+		return variableImportanceRepository.findAllDesc(); 
 	}
 	
 	public List<SilhouetteScores> getShtsScList(){
