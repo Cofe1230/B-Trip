@@ -1,0 +1,58 @@
+@charset "utf-8";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css");
+
+/**     header     **/
+.header{
+    margin-top: 50px;
+    height: 100px;
+    /* 드래그 방지*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.logo{
+    margin-left: 120px;
+}
+
+.nav{
+    font-family: Pretendard;
+    font-size: 20px;
+    font-weight: 300;
+    padding-inline: 50px;
+    height: fit-content;
+    width: 500px;
+    text-align: center;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.139);
+    transform: translate(60%, -120%);
+    padding-block: 10px;
+    color: white;
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+}
+
+.nav a:hover{
+    /* color: rgb(255, 120, 23); */
+    color: #ffe600;
+    font-weight: 300;
+}
+
+.navtxt{
+    height: fit-content;
+    text-decoration: none;
+    color: white;
+    padding-inline: 10px;
+}
+/* 수정 */
+.nav .active{
+    text-decoration: none;
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    font-weight: 400;
+    background-color: rgba(0, 0, 0, 0.418);
+    color: #ffe600;
+}
+/* 수정 끝 */

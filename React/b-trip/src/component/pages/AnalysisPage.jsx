@@ -8,14 +8,18 @@ const AnalysisPage = () => {
 
   const getChartData = async()=>{
     try{
-      const respVrbl = await axios.get('analysis/vrbl-imp')
+      //수정
+      const respVrbl = await axios.get(`${process.env.REACT_APP_API_URL}/analysis/vrbl-imp`)
+      //수정 끝
       const modifiedVData = respVrbl.data.map((item)=>{
         return{
           ...item,
           name : item.variable,
         }
       })
-      const respShts = await axios.get('analysis/shts-sc')
+      //수정
+      const respShts = await axios.get(`${process.env.REACT_APP_API_URL}/analysis/shts-sc`)
+      //수정 끝
       const modifiedSData = respShts.data.map((item)=>{
         return{
           ...item,
@@ -24,7 +28,9 @@ const AnalysisPage = () => {
       })
       setVrblImp(modifiedVData)
       setShtsSc(modifiedSData)
-      setIsLoading(false)
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 100);
     }catch(e){
       console.log(e)
     }

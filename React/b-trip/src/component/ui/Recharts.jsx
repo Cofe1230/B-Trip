@@ -77,10 +77,10 @@ export function ReChartVertBar(props) {
   );
 }
 // 수정- 추가
-// dot 크기나 색을 수정하고 싶으면 circle안에 fill r 값 변경
+// dot 크기나 색을 수정하고 싶으면 circle안에 fill(색) r(크기) 값 변경
 const CustomDot = (props) => {
   const { cx, cy, stroke, payload } = props;
-  if (payload.n==5) { // 특정 조건을 확인하여 원형 도트를 그립니다.
+  if (payload.n===5) { 
     return (
       <circle cx={cx} cy={cy} r={6} fill="red" />
     );
@@ -100,14 +100,14 @@ export function ReChartLine(props){
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey={xDataKey} tick={{ fontSize: 10, fill: 'white' }} />
-        {/* 수정 domain 추가 */}
+        {/* 수정 domain 추가 y축에 범위 수정 0.04~0.12로 */}
         <YAxis tick={{ fontSize: 14, fill: 'white' }} domain={[0.04, 'auto']}/>
         {/* 수정끝 */}
         <Tooltip />
         <Legend />
         {
           yDataKey.map((item)=>(
-            // 수정 dot={<CustomDot/>} 추가 , type이 category가 아니면 category로 수정해주세요
+            // 수정 dot={<CustomDot/>} 추가 , type이 category가 아니면 category로 변경해주세요
             <Line key={item.key} type="category" dataKey={item.key} stroke={item.stroke} activeDot={{ r: 8 }} dot={<CustomDot/>}  />
             // 수정 끝
           ))
