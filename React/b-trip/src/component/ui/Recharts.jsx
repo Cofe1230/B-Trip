@@ -76,16 +76,18 @@ export function ReChartVertBar(props) {
     </div>
   );
 }
-
+// 수정- 추가
+// dot 크기나 색을 수정하고 싶으면 circle안에 fill r 값 변경
 const CustomDot = (props) => {
   const { cx, cy, stroke, payload } = props;
-  if (payload.value==5) { // 특정 조건을 확인하여 원형 도트를 그립니다.
+  if (payload.n==5) { // 특정 조건을 확인하여 원형 도트를 그립니다.
     return (
       <circle cx={cx} cy={cy} r={6} fill="red" />
     );
   }
-  return null;
+  return <circle cx={cx} cy={cy} r={3} fill={stroke} />;
 };
+//수정 끝
 //recharts 라인 그래프
 export function ReChartLine(props){
   const {data, width, height, margin, xDataKey, yDataKey,} = props;
@@ -105,8 +107,8 @@ export function ReChartLine(props){
         <Legend />
         {
           yDataKey.map((item)=>(
-            // 수정 type이 category가 아니면 category로 수정해주세요
-            <Line key={item.key} type="category" dataKey={item.key} stroke={item.stroke} activeDot={{ r: 8 }}  />
+            // 수정 dot={<CustomDot/>} 추가 , type이 category가 아니면 category로 수정해주세요
+            <Line key={item.key} type="category" dataKey={item.key} stroke={item.stroke} activeDot={{ r: 8 }} dot={<CustomDot/>}  />
             // 수정 끝
           ))
         }
