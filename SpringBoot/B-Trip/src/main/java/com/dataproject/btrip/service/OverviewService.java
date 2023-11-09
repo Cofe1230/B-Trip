@@ -13,10 +13,11 @@ import com.dataproject.btrip.repository.SpotVisitorsRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class OverviewService {
-    private final ForiegnVisitorsRepository foriegnVisitorsRepository;
-    private final SpotVisitorsRepository spotVisitorsRepository;
+	@Autowired
+    private ForiegnVisitorsRepository foriegnVisitorsRepository;
+	@Autowired
+    private SpotVisitorsRepository spotVisitorsRepository;
 
     public List<ForiegnVisitors> getForiegnVisitors() {
         return foriegnVisitorsRepository.findAll();
