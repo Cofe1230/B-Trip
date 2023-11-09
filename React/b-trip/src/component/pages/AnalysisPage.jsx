@@ -9,7 +9,7 @@ const AnalysisPage = () => {
   const getChartData = async()=>{
     try{
       //수정
-      const respVrbl = await axios.get(`${process.env.REACT_APP_API_URL}/analysis/vrbl-imp`)
+      const respVrbl = await axios.get(`analysis/vrbl-imp`)
       //수정 끝
       const modifiedVData = respVrbl.data.map((item)=>{
         return{
@@ -18,7 +18,7 @@ const AnalysisPage = () => {
         }
       })
       //수정
-      const respShts = await axios.get(`${process.env.REACT_APP_API_URL}/analysis/shts-sc`)
+      const respShts = await axios.get(`analysis/shts-sc`)
       //수정 끝
       const modifiedSData = respShts.data.map((item)=>{
         return{
