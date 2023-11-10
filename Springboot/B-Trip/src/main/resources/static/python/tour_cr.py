@@ -1,3 +1,6 @@
+
+# -*- coding: utf-8 -*-
+
 # step1. 라이브러리 불러오기
 import requests
 from sqlalchemy import create_engine
@@ -20,7 +23,7 @@ def do_cr():
     # step2. DB생성
     conn = pymysql.connect(host='localhost',
                         user='root',
-                        password='ddbs@7894',
+                        password='root',
                         db='btrip',
                         charset='utf8')
 
@@ -100,7 +103,7 @@ def do_cr():
 
             category = category_list[seq-1]
 
-            print('[ ' + category + ' ] : ' + str(page_num+1) + ' / ' + str(page) + ' 페이지 >> 크롤링 작업 [ 시작 ]')
+            print('[ ' + category + ' ] : ' + str(page_num+1) + ' / ' + str(page) + ' 페이지 >> 크롤링 작업 [ 시작 ]', flush = True)
 
             # css selector로 페이지 내의 원하는 정보 가져오기
             html_title = soup.select('div.info p')
@@ -135,7 +138,7 @@ def do_cr():
                 tour_category.append(category)
                 tour_category_num.append(seq)
             
-            print('[ ' + category + ' ] 크롤링 작업 [ 완료 ] \n')
+            print('[ ' + category + ' ] 크롤링 작업 [ 완료 ] \n', flush = True)
 
         seq += 1
     # step6. zip 모듈을 이용해서 list를 묶어주기        
@@ -143,7 +146,7 @@ def do_cr():
                         tour_name,
                         tour_link_url,
                         tour_img_url,
-                        tour_views,
+                        tour_views, 
                         tour_comments,
                         tour_likes,
                         tour_category,
@@ -165,20 +168,12 @@ def do_cr():
 
     df.to_excel('투어리스트.xlsx')
     df.to_sql(name='tour_list', con=conn, if_exists='replace',index=False)  
-    print('<<< 관광 데이터 크롤링 작업 완료 >>>')
-    print(datetime.datetime.now())
+    print('<<< 관광 데이터 크롤링 작업 완료 >>>', flush = True)
+    print(datetime.datetime.now(), flush = True)
     end = time.time()
-    print('소요시간 : ' + f"{end - start : .5f} sec")
-    print('')
+    delay = end - start
+    print('소요시간 : ' + str(delay) + " sec", flush = True)
+    print('', flush = True)
 
-
-
-# step10. 반복수행(1시간 주기)
-schedule.every(1).hour.at(":40").do(do_cr)
 
 do_cr()
-
-
-while True:
-    schedule.run_pending()
-    time.sleep(1)
