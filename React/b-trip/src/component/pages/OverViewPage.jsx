@@ -21,9 +21,9 @@ const OverViewPage = () => {
       const groupedspotData = groupDataBytitle(respSpotVisitor.data)
       setSpotVisitor(groupedspotData)
       setTimeout(() => {
-        
+        setIsLoading(false);
       }, 100);
-      setIsLoading(false);
+      
 
     }catch(e){
       console.log(e);
