@@ -4,8 +4,13 @@
 body {
     background-image: url('../ui/BACK.gif');
     /* background-size: cover; */
-    width: 100vw;
+    width: 100%;
     height: auto;
+}
+
+body::-webkit-scrollbar {
+    visibility: hidden;
+    width: 0;
 }
 
 .home{
@@ -80,4 +85,4 @@ body {
     color: #ffc600;
 }
 
-/* color: 2744AA, 122171, 08145E, 000846, FFC600 */
+/* color: 2744AA, 122171, 08145E, 000846, FFC600 6bb9f7*/

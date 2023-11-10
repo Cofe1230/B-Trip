@@ -1,9 +1,8 @@
 import React from 'react';
-import { BarChart, Bar,  XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart, Line} from 'recharts';
+import { BarChart, Bar,  XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart, Line } from 'recharts';
 
-//리차트 bar그래프
 export function ReChartBar(props) {
-  const {data, width, height, margin, xDataKey, yDataKey,} = props;
+  const {data, width, height, margin, xDataKey, yDataKey} = props;
   return (
     <div>
     <BarChart
@@ -13,7 +12,7 @@ export function ReChartBar(props) {
       margin={margin}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      {/* <XAxis dataKey={xDataKey} tick={{ fontSize: 10, fill: 'white' }} /> */}
+      {/* <XAxis dataKey={xDataKey} interval={0} tick={{ fontSize: 10, fill: 'white'}}/> */}
       <XAxis interval={0} dataKey={xDataKey} tick={(props) => {
         const { x, y, payload } = props;
         // xDataKey에 따라 레이블 커스터마이즈
@@ -36,7 +35,7 @@ export function ReChartBar(props) {
       <YAxis tick={{ fontSize: 14, fill: 'white' }}>
         {/* <Label value="Y-Axis Label" position="insideLeft" angle={-90} style={{ fontSize: '14px', fill: 'white' }} /> */}
       </YAxis>
-      <Tooltip/>
+      <Tooltip />
       <Legend/>
       {
         yDataKey.map((item)=>(
@@ -76,21 +75,21 @@ export function ReChartVertBar(props) {
     </div>
   );
 }
-// 수정- 추가
+
 // dot 크기나 색을 수정하고 싶으면 circle안에 fill(색) r(크기) 값 변경
 const CustomDot = (props) => {
   const { cx, cy, stroke, payload } = props;
   if (payload.n===5) { 
     return (
-      <circle cx={cx} cy={cy} r={6} fill="red" />
+      <circle cx={cx} cy={cy} r={3} fill="#ff4b12" stroke='#ff4b1280' strokeWidth={50} />
     );
   }
   return <circle cx={cx} cy={cy} r={3} fill={stroke} />;
 };
-//수정 끝
+
 //recharts 라인 그래프
 export function ReChartLine(props){
-  const {data, width, height, margin, xDataKey, yDataKey,} = props;
+  const {data, width, height, margin, xDataKey, yDataKey} = props;
   return (
       <LineChart
         width={width}
@@ -100,17 +99,14 @@ export function ReChartLine(props){
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey={xDataKey} tick={{ fontSize: 10, fill: 'white' }} />
-        {/* 수정 domain 추가 y축에 범위 수정 0.04~0.12로 */}
         <YAxis tick={{ fontSize: 14, fill: 'white' }} domain={[0.04, 'auto']}/>
-        {/* 수정끝 */}
         <Tooltip />
         <Legend />
         {
           yDataKey.map((item)=>(
             // 수정 dot={<CustomDot/>} 추가 , type이 category가 아니면 category로 변경해주세요
-            <Line key={item.key} type="category" dataKey={item.key} stroke={item.stroke} activeDot={{ r: 8 }} dot={<CustomDot/>}  />
-            // 수정 끝
-          ))
+            <Line key={item.key} type="category" dataKey={item.key} stroke={item.stroke} activeDot={{ r: 8 }} dot={<CustomDot/>}  />          
+            ))
         }
       </LineChart>
   );

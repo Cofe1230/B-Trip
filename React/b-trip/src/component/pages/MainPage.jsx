@@ -45,6 +45,7 @@ const MainPage = () => {
             | BUSAN FIREWORKS FESTIVAL 
             | BUSAN ONEASIA FESTIVAL 
             | BUSAN HIPHOP FESTIVAL 
+            | BUSAN INTERNATIONAL ART FAIR 
             </span>
         </div>
         <div className='track4'>
