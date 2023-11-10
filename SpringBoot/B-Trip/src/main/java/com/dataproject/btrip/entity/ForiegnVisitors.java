@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class ForiegnVisitors {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private long id;
 	@Column(name = "year", nullable = false)
 	private String year;
 	@Column(name = "month", nullable = false)

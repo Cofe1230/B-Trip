@@ -15,7 +15,7 @@ import com.dataproject.btrip.service.AnalysisService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("api/analysis/*")
+@RequestMapping("/api/analysis/*")
 @RequiredArgsConstructor
 public class AnalysisController {
 	private final AnalysisService analysisService;

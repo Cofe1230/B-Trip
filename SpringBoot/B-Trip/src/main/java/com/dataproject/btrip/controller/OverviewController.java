@@ -17,7 +17,7 @@ import com.dataproject.btrip.service.OverviewService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/overview/*")
+@RequestMapping("/api/overview/*")
 @RequiredArgsConstructor
 public class OverviewController {
 	private final OverviewService overviewService;
