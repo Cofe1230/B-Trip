@@ -10,7 +10,7 @@ import schedule
 import time
 import datetime
 import pandas as pd
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import urlparse, parse_qs, quote_plus
 
 base_url = 'https://www.visitbusan.net'
 
@@ -23,7 +23,7 @@ def do_cr():
     # step2. DB생성
     conn = pymysql.connect(host='localhost',
                         user='root',
-                        password='root',
+                        password='ddbs@7894',
                         db='btrip',
                         charset='utf8')
 
@@ -162,11 +162,12 @@ def do_cr():
 
     # step9. DB, 엑셀에 저장
     # DB연결 (sqlalchemy)
-    db_con_str = 'mysql+pymysql://root:root@localhost/btrip'
+    encoded_password = quote_plus('ddbs@7894')
+    db_con_str = f'mysql+pymysql://root:{encoded_password}@localhost/btrip'
     db_connection = create_engine(db_con_str)
     conn = db_connection.connect()
 
-    df.to_excel('투어리스트.xlsx')
+    
     df.to_sql(name='tour_list', con=conn, if_exists='replace',index=False)  
     print('<<< 관광 데이터 크롤링 작업 완료 >>>', flush = True)
     print(datetime.datetime.now(), flush = True)

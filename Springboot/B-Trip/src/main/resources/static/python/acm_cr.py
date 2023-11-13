@@ -10,7 +10,7 @@ import schedule
 import time
 from datetime import datetime, timedelta
 import pandas as pd
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import urlparse, parse_qs, quote_plus
 
 # 숙박 시설 정보 크롤링
 def do_acm_cr():
@@ -20,7 +20,7 @@ def do_acm_cr():
     # step2. DB생성
     conn = pymysql.connect(host='localhost',
                         user='root',
-                        password='root',
+                        password='ddbs@7894',
                         db='btrip',
                         charset='utf8')
 
@@ -143,12 +143,13 @@ def do_acm_cr():
 
     # step9. DB, 엑셀에 저장
     # DB연결 (sqlalchemy)
-    db_con_str = 'mysql+pymysql://root:root@localhost/btrip'
+    encoded_password = quote_plus('ddbs@7894')
+    db_con_str = f'mysql+pymysql://root:{encoded_password}@localhost/btrip'
     db_connection = create_engine(db_con_str)
     conn = db_connection.connect()
 
     df.to_sql(name='acm_list', con=conn, if_exists='replace',index=False)  
-    df.to_excel('숙박시설리스트.xlsx')
+
     print('<<< 숙박시설 데이터 크롤링 작업 완료 >>>', flush = True)
     print(datetime.now(), flush = True)
     end = time.time()
