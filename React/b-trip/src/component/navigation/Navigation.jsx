@@ -1,18 +1,19 @@
 import { React } from 'react';
-import {NavLink} from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
 import '../styles/Navigation.css';
 import logo from '../ui/logo.png';
+import { useLocation } from 'react-router-dom';
 
 const Navigation = () => {
-  
+  const location = useLocation();
   return (
     <div className='header'>
       <a href='/'><img src={logo} className='logo' alt='logo'/></a>
       <div className='nav'>
-        <NavLink activeClassName='active' to="/overview" >OVERVIEW</NavLink>
-        <NavLink activeClassName='active' to="/statics" >STATICS</NavLink> 
-        <NavLink activeClassName='active' to="/analysis" >ANALYSIS</NavLink>
-        <NavLink activeClassName='active' to="/recommend" >RECOMMEND</NavLink>
+        <Nav.Link href='/overview' className={location.pathname === '/overview' ? 'active' : ''} >OVERVIEW</Nav.Link>
+        <Nav.Link href='/statics' className={location.pathname === '/statics' ? 'active' : ''} >STATICS</Nav.Link> 
+        <Nav.Link href='/analysis' className={location.pathname === '/analysis' ? 'active' : ''} >ANALYSIS</Nav.Link>
+        <Nav.Link href='/recommend' className={location.pathname === '/recommend' ? 'active' : ''} >RECOMMEND</Nav.Link>
       </div>
     </div>
   );

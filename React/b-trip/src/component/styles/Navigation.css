@@ -36,9 +36,8 @@
 }
 
 .nav a:hover{
-    /* color: rgb(255, 120, 23); */
     color: #ffe600;
-    font-weight: 300;
+    font-weight: 500;
 }
 
 .nav a{
@@ -50,11 +49,6 @@
 }
 
 .nav .active{
-    text-decoration: none;
-    padding: 9px;
-    border: 1px solid transparent;
-    border-radius: 15px;
-    font-weight: 400;
-    background-color: rgba(0, 0, 0, 0.418);
-    color: #ffe600;
+    color:#ffe600;
+    font-weight: 500;
 }

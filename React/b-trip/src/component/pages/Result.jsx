@@ -52,8 +52,7 @@ const Result = () => {
           tourCategory = [3];
           break;
         case "Etc":
-          //수정
-          tourCategory = [1]; // or 1, 2, 3, 4
+          tourCategory = [5];
           break;
         default:
           break;
@@ -67,39 +66,31 @@ const Result = () => {
           acmCategory = [2];
           break;
         case "200$ ~ 300$":
-          acmCategory = [5];
+          acmCategory = [3];
           break;
         case "300$ ~":
-          acmCategory = [3, 4];
+          acmCategory = [4];
           break;
         default:
           break;
       }
 
+      let tourDataResponses = []
+
       try {
-        const [tourDataResponses, acmDataResponses, satisfactionDataResponses] = await Promise.all([
-          Promise.all(tourCategory.map((category) =>
-            axios.get(`api/tour/list/${category}`)
-          )),
-          Promise.all(acmCategory.map((category) =>
-            axios.get(`api/tour/list/${category}`)
-          )),
-          Promise.all(tourCategory.map((category) =>
-            axios.get(`api/tour/list/${category}`)
-          ))
-        ]);
+        tourDataResponses = await axios.get(`api/tour/list/${tourCategory}/${acmCategory}`)
+            .then((response)=> {
 
-        const combinedTourData = tourDataResponses.flatMap((response) => response.data.rec_1);
-        const combinedAcmData = acmDataResponses.flatMap((response) => response.data.acm);
-        const combinedSatisfactionData = satisfactionDataResponses.flatMap((response) => response.data.rec_2);
-        
-        setTourData(combinedTourData);
-        setAcmData(combinedAcmData);
-        setSatisfactionData(combinedSatisfactionData);
-        setIsLoading(false)
+              setTourData(response.data.rec_1);
+              setAcmData(response.data.acm);
+              setSatisfactionData(response.data.rec_2);
+            })
+          
+        ;
+        setIsLoading(false);
 
-      } catch (combinedAcmData) {
-        console.log("데이터 로드 실패:", combinedAcmData);
+      } catch{
+        console.log("데이터 로드 실패:");
       }
     };
 
@@ -176,7 +167,11 @@ const Result = () => {
                           : <span>&nbsp;</span>
                         }
                         <span id='score'>{item.score}</span>
-                        <p>{item.price}</p>
+                        <p>KRW&nbsp;
+                          {
+                            Number(item.price).toLocaleString()
+                          }
+                        </p>
                         <a href={item.link_url} target='blank'>Go Reservation</a>
                         <p id='tax'>* {item.tax_charge}</p>
                       </div>

@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import { React, useState, useEffect } from 'react';
 import axios from 'axios';
-import {ReChartVertBar, ReChartLine} from '../ui/Recharts';
+import { ReChartVertBar, ReChartLine } from '../ui/Recharts';
 import '../styles/AnalysisPage.css';
 import process from '../ui/process.png';
 import rfroest from '../ui/rforest.png';
@@ -29,9 +29,7 @@ const AnalysisPage = () => {
       })
       setVrblImp(modifiedVData)
       setShtsSc(modifiedSData)
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 100);
+      setIsLoading(false)
     }catch(e){
       console.log(e)
     }

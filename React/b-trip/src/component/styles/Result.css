@@ -9,7 +9,6 @@
     margin-inline: 20%;
     height: 800px;
     overflow-y: auto;
-    /* background-image: url('../ui/board.png'); */
     /* 드래그 방지*/
     -webkit-user-select: none;
     -moz-user-select: none;
